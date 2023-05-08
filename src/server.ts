@@ -1,3 +1,5 @@
+import { Router } from "express";
+
 // ----* Express Config *---- //
 const express = require("express");
 const app = express();
@@ -47,14 +49,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 // ----* Routes *---- //
-const initRoute = require("./routes/init-route");
-const loginRoute = require("./routes/login-route");
-const signupRoute = require("./routes/signup-route");
+const initRoute = require("./routes/init.route");
+const loginRoute = require("./routes/login.route");
+const signupRoute = require("./routes/signup.route");
+const authRoutes = require("./routes/auth.route");
 
 // ----* Route Grouping *---- //
-app.use(initRoute);
-app.use(loginRoute);
-app.use("/signup", signupRoute);
+app.use(authRoutes);
+
+// app.use(loginRoute);
+// app.use("/signup", signupRoute);
 
 // ----* Init *---- //
 const port = process.env.PORT;

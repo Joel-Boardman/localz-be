@@ -4,7 +4,7 @@ const router = Router();
 // Packages
 const moment = require("moment");
 const path = require("path");
-const accessLogStream = require("../utils/logger");
+const accessLogStream = require("../util/logger.util");
 
 // Check if the server is currently running.
 router.get("/", async (req: Request, res: Response) => {
